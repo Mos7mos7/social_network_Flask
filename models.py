@@ -37,7 +37,7 @@ class User(UserMixin, Model):
 	def get_posts(self):
 		return Post.select().where(Post.user == self)
 
-	def get_stream(self):
+	def get_stream(self):	#returns posts from you and your friends
 		return Post.select().where(
 			(Post.user << self.following()),
 			(Post.user == self)
